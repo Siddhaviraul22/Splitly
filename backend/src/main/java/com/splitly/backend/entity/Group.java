@@ -4,11 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Getter
-@Setter
+@Table(name = "group_table")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "groups")
 public class Group {
 
     @Id
@@ -17,7 +16,5 @@ public class Group {
 
     private String groupName;
 
-    @ManyToOne
-    @JoinColumn(name = "created_by")
-    private User createdBy;
+    private Long createdBy;
 }
