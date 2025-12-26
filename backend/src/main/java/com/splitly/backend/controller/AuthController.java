@@ -1,0 +1,24 @@
+package com.splitly.backend.controller;
+import com.splitly.backend.dto.LoginRequest;
+import com.splitly.backend.dto.RegisterRequest;
+import com.splitly.backend.service.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    @Autowired
+    private AuthService authService;
+
+    @PostMapping("/register")
+    public String register(@RequestBody RegisterRequest request) {
+        return authService.register(request);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody LoginRequest request) {
+        return authService.login(request);
+    }
+}
