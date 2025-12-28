@@ -16,5 +16,9 @@ public class Group {
 
     private String groupName;
 
-    private Long createdBy;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private User createdBy;
+
+    // getters and setters
 }
