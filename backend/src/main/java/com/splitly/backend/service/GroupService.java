@@ -5,7 +5,7 @@ import com.splitly.backend.entity.Group;
 import com.splitly.backend.entity.User;
 import com.splitly.backend.repository.GroupRepository;
 import com.splitly.backend.repository.UserRepository;
-import com.splitly.backend.util.SecurityUtil;
+import com.splitly.backend.security.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

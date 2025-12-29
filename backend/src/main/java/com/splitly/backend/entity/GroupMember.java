@@ -1,41 +1,25 @@
 package com.splitly.backend.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
-@Table(name = "group_member")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "group_members")
 public class GroupMember {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Which group
     @ManyToOne
-    @JoinColumn(name = "group_id")
+    @JoinColumn(name = "group_id", nullable = false)
     private Group group;
 
-    // Member name (basic version, not registered user)
-    private String memberName;
-
-    // getters and setters
-    public Long getId() {
-        return id;
-    }
-
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
-    public String getMemberName() {
-        return memberName;
-    }
-
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
-    }
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
