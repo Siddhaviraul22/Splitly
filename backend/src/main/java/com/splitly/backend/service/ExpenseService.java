@@ -14,14 +14,17 @@ public class ExpenseService {
     private final ExpenseRepository expenseRepository;
     private final GroupRepository groupRepository;
     private final UserRepository userRepository;
+    private final SplitService splitService;
 
     public ExpenseService(
             ExpenseRepository expenseRepository,
             GroupRepository groupRepository,
-            UserRepository userRepository) {
+            UserRepository userRepository,
+            SplitService splitService) {
         this.expenseRepository = expenseRepository;
         this.groupRepository = groupRepository;
         this.userRepository = userRepository;
+        this.splitService = splitService;
     }
 
     // ADD EXPENSE
@@ -41,7 +44,12 @@ public class ExpenseService {
         expense.setGroup(group);
         expense.setPaidBy(user);
 
-        return expenseRepository.save(expense);
+        Expense savedExpense = expenseRepository.save(expense);
+
+        // ⭐ CREATE SPLITS
+        splitService.createEqualSplits(savedExpense);
+
+        return savedExpense;
     }
 
     // GET GROUP EXPENSES
