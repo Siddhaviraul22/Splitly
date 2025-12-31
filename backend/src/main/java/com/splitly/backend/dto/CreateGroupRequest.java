@@ -1,5 +1,10 @@
 package com.splitly.backend.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class CreateGroupRequest {
-    public String groupName;
+    private String groupName;
 }
