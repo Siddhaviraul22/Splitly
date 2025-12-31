@@ -16,9 +16,11 @@ public class Split {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "expense_id", nullable = false)
     private Expense expense;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     private Double amountOwed;
