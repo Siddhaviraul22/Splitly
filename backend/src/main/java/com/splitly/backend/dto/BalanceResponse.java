@@ -6,7 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class BalanceResponse {
-    private String fromUser;
-    private String toUser;
+
+    private String fromUser;   // who owes
+    private String toUser;     // who is owed
     private double amount;
 }
