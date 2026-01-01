@@ -9,5 +9,5 @@ import java.util.List;
 public interface SplitRepository extends JpaRepository<Split, Long> {
 
     List<Split> findByExpense(Expense expense);
-
+    List<Split> findByExpense_Group_Id(Long groupId);
 }
