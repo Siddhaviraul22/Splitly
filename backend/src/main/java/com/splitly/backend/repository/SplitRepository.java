@@ -10,4 +10,7 @@ public interface SplitRepository extends JpaRepository<Split, Long> {
 
     List<Split> findByExpense(Expense expense);
     List<Split> findByExpense_Group_Id(Long groupId);
+    List<Split> findByUser_IdAndSettledFalse(Long userId);
+    List<Split> findByExpense_PaidBy_IdAndSettledFalse(Long userId);
+
 }

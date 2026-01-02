@@ -15,6 +15,9 @@ public class Split {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private boolean settled = false;
+
     @ManyToOne
     @JoinColumn(name = "expense_id", nullable = false)
     private Expense expense;
