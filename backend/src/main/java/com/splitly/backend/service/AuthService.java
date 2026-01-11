@@ -23,14 +23,16 @@ public class AuthService {
 
     public String register(RegisterRequest request) {
 
-        if (userRepository.findByEmail(request.getEmail()) != null) {
+        if (userRepository.findByEmail(request.email) != null) {
             throw new RuntimeException("Email already exists");
         }
 
         User user = new User();
-        user.setName(request.getName());
-        user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setName(request.name);
+        user.setEmail(request.email);
+        user.setPassword(
+                passwordEncoder.encode(request.password)
+        );
 
         userRepository.save(user);
 
@@ -39,11 +41,11 @@ public class AuthService {
 
     public String login(LoginRequest request) {
 
-        User user = userRepository.findByEmail(request.getEmail());
+        User user = userRepository.findByEmail(request.email);
 
         if (user == null ||
                 !passwordEncoder.matches(
-                        request.getPassword(),
+                        request.password,
                         user.getPassword()
                 )) {
             throw new RuntimeException("Invalid credentials");

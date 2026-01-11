@@ -1,6 +1,5 @@
 package com.splitly.backend.controller;
 import com.splitly.backend.dto.LoginRequest;
-import com.splitly.backend.dto.RegisterRequest;
 import com.splitly.backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
