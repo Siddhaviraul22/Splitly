@@ -1,41 +1,36 @@
 import { useState } from "react";
 import axios from "axios";
 
-function Login() {
+function Register() {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
 
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
-        try {
-            const response = await axios.post(
-                "http://localhost:8080/auth/login",
-                {
-                    email: email,
-                    password: password,
-                }
-            );
+        await axios.post("http://localhost:8080/auth/register", {
+            name,
+            email,
+            password,
+        });
 
-            localStorage.setItem("token", response.data);
-            window.location.href = "/dashboard";
-        } catch (err) {
-            setError("Invalid email or password");
-        }
+        window.location.href = "/login";
     };
 
     return (
         <div style={styles.container}>
-            <form style={styles.card} onSubmit={handleLogin}>
-                <h2>Splitly Login</h2>
-
-                {error && <p style={{ color: "red" }}>{error}</p>}
+            <form style={styles.card} onSubmit={handleRegister}>
+                <h2>Create Account</h2>
 
                 <input
-                    type="email"
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value)}
+                    style={styles.input}
+                />
+
+                <input
                     placeholder="Email"
-                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     style={styles.input}
                 />
@@ -43,12 +38,11 @@ function Login() {
                 <input
                     type="password"
                     placeholder="Password"
-                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     style={styles.input}
                 />
 
-                <button style={styles.button}>Login</button>
+                <button style={styles.button}>Register</button>
             </form>
         </div>
     );
@@ -83,4 +77,4 @@ const styles = {
     },
 };
 
-export default Login;
+export default Register;
