@@ -5,6 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SettleRequest {
-    private Long splitId;
+public class LoginRequest {
+
+    private String email;
+    private String password;
 }

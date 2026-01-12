@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class DashboardSummary {
+public class DashboardResponse {
 
     private double totalSpent;
     private double youOwe;

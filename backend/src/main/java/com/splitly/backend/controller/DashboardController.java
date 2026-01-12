@@ -1,6 +1,6 @@
 package com.splitly.backend.controller;
 
-import com.splitly.backend.dto.DashboardSummary;
+import com.splitly.backend.dto.DashboardResponse;
 import com.splitly.backend.service.DashboardService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class DashboardController {
     }
 
     @GetMapping
-    public DashboardSummary getDashboard() {
+    public DashboardResponse getDashboard() {
         return dashboardService.getDashboard();
     }
 }

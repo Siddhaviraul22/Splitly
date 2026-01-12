@@ -3,6 +3,7 @@ import com.splitly.backend.dto.LoginRequest;
 import com.splitly.backend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.splitly.backend.dto.RegisterRequest;
 
 @RestController
 @RequestMapping("/auth")

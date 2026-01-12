@@ -1,6 +1,6 @@
 package com.splitly.backend.controller;
 
-import com.splitly.backend.dto.SettleRequest;
+import com.splitly.backend.dto.SettlementRequest;
 import com.splitly.backend.service.SettlementService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +15,7 @@ public class SettlementController {
     }
 
     @PostMapping
-    public void settle(@RequestBody SettleRequest request) {
+    public void settle(@RequestBody SettlementRequest request) {
         settlementService.settleSplit(request.getSplitId());
     }
 }

@@ -14,7 +14,6 @@ public class SettlementService {
     }
 
     public void settleSplit(Long splitId) {
-
         Split split = splitRepository.findById(splitId)
                 .orElseThrow(() -> new RuntimeException("Split not found"));
 
