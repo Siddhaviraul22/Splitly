@@ -2,6 +2,7 @@ package com.splitly.backend.controller;
 
 import com.splitly.backend.dto.LoginRequest;
 import com.splitly.backend.entity.User;
+import com.splitly.backend.security.JwtUtil;
 import com.splitly.backend.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,6 @@ public class UserController {
             return "Invalid password";
         }
 
-        return "Login successful";
+        return JwtUtil.generateToken(user.getEmail());
     }
 }
